@@ -15,13 +15,12 @@ const app = async () => {
             await listFilm();
             break;
         case "update":
-            const filmQuery = {
-                name: process.argv[3]
-                };
-            await updateFilm(
-                { name: process.argv[3] },
-                { like: process.argv[4]}
-            );
+            const updateObj ={
+                name : process.argv[3],
+                actor: process.argv[4],
+                like: process.argv[5],
+            };
+            await updateFilm(updateObj);
             break;
         case "delete":
             const find = {

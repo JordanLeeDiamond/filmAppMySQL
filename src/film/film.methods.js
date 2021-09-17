@@ -1,3 +1,4 @@
+const { update } = require("./film.model");
 const Film = require("./film.model");
 
 exports.addFilm = async (filmObj) => {
@@ -18,11 +19,14 @@ exports.listFilm = async () => {
     }
 };
 
-exports.updateFilm = async (filmQuery, updateValues) => {
-    try{
-        await Film.update(updateValues, { where: filmQuery});
-        console.log(`${filmQuerry.name} has been Updated.`)
-    } catch (error){
+exports.updateFilm = async (updateObj)=>{
+    try {
+        await Film.update({
+            like: updateObj.like
+        }, {
+            where: { name: updateObj.name }
+        })
+    } catch (error) {
         console.log(error);
     }
 };
